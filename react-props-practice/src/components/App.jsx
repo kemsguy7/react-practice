@@ -2,35 +2,32 @@ import React from "react";
 import styles from "../styles.css";
 import Card from "./Card";
 import contacts from "../contacts";
+import Avatar from "./Avatar";
+
+function createCard(contact) {
+  return(
+    <Card 
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  )
+}
+
+
 function App() {
   return (
-    <>
+    <div>
       <h1 className="heading">My Contacts</h1>
-      {contacts.length >= 1 && <Card
-        name={contacts[0].name}
-        img={contacts[0].imgURL}
-        tel={contacts[0].phone}
-        email={contacts[0].email}
-      />}
-      {contacts.length >= 2 && <Card
-        name={contacts[1].name}
-        img={contacts[1].imgURL}
-        tel={contacts[1].phone}
-        email={contacts[1].email}
-      />}
-      {contacts.length >= 3 && <Card
-        name={contacts[2].name}
-        img={contacts[2].imgURL}
-        tel={contacts[2].phone}
-        email={contacts[2].email}
-      />}
-      {contacts.length >= 4 && <Card
-        name={contacts[3].name}
-        img={contacts[3].imgURL}
-        tel={contacts[3].phone}
-        email={contacts[3].email}
-      />}
-    </>
+      <Avatar 
+      img="https://media.licdn.com/dms/image/D4D03AQGIudUo2fE_sw/profile-displayphoto-shrink_800_800/0/1701769675962?e=2147483647&v=beta&t=qgGN8cUdivwf-0aAmeVoOEJqdnMdVSNByTj1JkfmU2s"
+      /> 
+      {contacts.map(createCard)}
+
+      
+    </div> 
   );
  }
  
